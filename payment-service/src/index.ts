@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express';
 import { AppDataSource } from './config/database';
 import { consumerOrderCreated } from './kafka/consumer';
