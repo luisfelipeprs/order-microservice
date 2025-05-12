@@ -1,6 +1,7 @@
 import { Kafka } from "kafkajs";
 import { AppDataSource } from "../config/database";
 import { Payment } from "../database/payment.entity";
+import { producerPaymentProcessed } from "./producer";
 
 
 
@@ -30,7 +31,7 @@ export async function consumerOrderCreated() {
       await repo.save(payment);
       console.log("payment created to order id: ", order.id);
 
-      // call producer here
+      producerPaymentProcessed(payment)
     }
   })
 }
